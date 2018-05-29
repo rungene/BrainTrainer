@@ -3,7 +3,6 @@ package com.example.robpercival.braintrainer;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,7 +74,7 @@ public class MainActivity extends Activity {
         int a = rand.nextInt(21);
         int b = rand.nextInt(21);
 
-        sumTextView.setText(Integer.toString(a) + " + " + Integer.toString(b));
+        sumTextView.setText(Integer.toString(a) + " * " + Integer.toString(b));
 
         locationOfCorrectAnswer = rand.nextInt(4);
 
@@ -87,15 +86,15 @@ public class MainActivity extends Activity {
 
             if (i == locationOfCorrectAnswer) {
 
-                answers.add(a + b);
+                answers.add(a * b);
 
             } else {
 
-                incorrectAnswer = rand.nextInt(41);
+                incorrectAnswer = rand.nextInt(401);
 
-                while (incorrectAnswer == a + b) {
+                while (incorrectAnswer == a * b) {
 
-                    incorrectAnswer = rand.nextInt(41);
+                    incorrectAnswer = rand.nextInt(401);
 
                 }
 
