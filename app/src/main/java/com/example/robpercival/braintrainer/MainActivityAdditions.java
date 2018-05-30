@@ -1,22 +1,19 @@
 package com.example.robpercival.braintrainer;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-
-public class MainActivity extends Activity {
+public class MainActivityAdditions extends Activity {
 
     Button startButton;
     TextView resultTextView;
@@ -29,16 +26,11 @@ public class MainActivity extends Activity {
     TextView timerTextView;
     Button playAgainButton;
     RelativeLayout gameRelativeLayout;
-    boolean gameIsActive = true;
-    GridLayout gridLayout;
 
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int locationOfCorrectAnswer;
     int score = 0;
     int numberOfQuestions = 0;
-
-
-    
 
     public void playAgain(View view) {
 
@@ -49,9 +41,6 @@ public class MainActivity extends Activity {
         pointsTextView.setText("0/0");
         resultTextView.setText("");
         playAgainButton.setVisibility(View.INVISIBLE);
-        gridLayout.setVisibility(View.VISIBLE);
-        gameIsActive = true;
-
 
         generateQuestion();
 
@@ -67,24 +56,15 @@ public class MainActivity extends Activity {
             @Override
             public void onFinish() {
 
-
                 playAgainButton.setVisibility(View.VISIBLE);
                 timerTextView.setText("0s");
                 resultTextView.setText("Your score: " + Integer.toString(score) + "/" + Integer.toString(numberOfQuestions));
-                gridLayout.setVisibility(View.INVISIBLE);
-
-                gameIsActive = false;
-
-
-
-               // gameIsActive = false;
 
             }
         }.start();
 
 
     }
-
 
     public void generateQuestion() {
 
@@ -93,7 +73,7 @@ public class MainActivity extends Activity {
         int a = rand.nextInt(21);
         int b = rand.nextInt(21);
 
-        sumTextView.setText(Integer.toString(a) + " * " + Integer.toString(b));
+        sumTextView.setText(Integer.toString(a) + " + " + Integer.toString(b));
 
         locationOfCorrectAnswer = rand.nextInt(4);
 
@@ -105,15 +85,15 @@ public class MainActivity extends Activity {
 
             if (i == locationOfCorrectAnswer) {
 
-                answers.add(a * b);
+                answers.add(a + b);
 
             } else {
 
-                incorrectAnswer = rand.nextInt(401);
+                incorrectAnswer = rand.nextInt(41);
 
-                while (incorrectAnswer == a * b) {
+                while (incorrectAnswer == a + b) {
 
-                    incorrectAnswer = rand.nextInt(401);
+                    incorrectAnswer = rand.nextInt(41);
 
                 }
 
@@ -131,7 +111,6 @@ public class MainActivity extends Activity {
 
 
     }
-
 
     public void chooseAnswer(View view) {
 
@@ -159,7 +138,6 @@ public class MainActivity extends Activity {
         gameRelativeLayout.setVisibility(RelativeLayout.VISIBLE);
 
         playAgain(findViewById(R.id.playAgainButton));
-       // gameIsActive= true;
 
     }
 
@@ -179,7 +157,6 @@ public class MainActivity extends Activity {
         timerTextView = (TextView)findViewById(R.id.timerTextView);
         playAgainButton = (Button)findViewById(R.id.playAgainButton);
         gameRelativeLayout = (RelativeLayout)findViewById(R.id.gameRelativeLayout);
-        gridLayout = (GridLayout) findViewById(R.id.gridLayout);
 
 
     }
@@ -204,9 +181,9 @@ public class MainActivity extends Activity {
         }*/
         int id = item.getItemId();
 
-        if (id == R.id.action_additions) {
+        if (id == R.id.action_settings) {
             // launch settings activity
-            startActivity(new Intent(MainActivity.this, MainActivityAdditions.class));
+           // startActivity(new Intent(MainActivity.this, MainActivityAdditions.class));
             return true;
         }
 
