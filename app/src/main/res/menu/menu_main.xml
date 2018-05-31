@@ -5,8 +5,16 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
+    <item android:id="@+id/action_multiplications"
+        android:title="@string/action_multiplications"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
     <item android:id="@+id/action_additions"
         android:title="@string/action_additions"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+    <item android:id="@+id/action_subtractions"
+        android:title="@string/action_subtractions"
         android:orderInCategory="100"
         app:showAsAction="always" />
 </menu>

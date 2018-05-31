@@ -15,8 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-public class MainActivity extends Activity {
+public class MainActivitySubtractions extends Activity {
 
     Button startButton;
     TextView resultTextView;
@@ -77,7 +76,7 @@ public class MainActivity extends Activity {
 
 
 
-               // gameIsActive = false;
+                // gameIsActive = false;
 
             }
         }.start();
@@ -90,10 +89,10 @@ public class MainActivity extends Activity {
 
         Random rand = new Random();
 
-        int a = rand.nextInt(21);
-        int b = rand.nextInt(21);
+        int a = rand.nextInt(401);
+        int b = rand.nextInt(401);
 
-        sumTextView.setText(Integer.toString(a) + " * " + Integer.toString(b));
+        sumTextView.setText(Integer.toString(a) + " - " + Integer.toString(b));
 
         locationOfCorrectAnswer = rand.nextInt(4);
 
@@ -105,15 +104,15 @@ public class MainActivity extends Activity {
 
             if (i == locationOfCorrectAnswer) {
 
-                answers.add(a * b);
+                answers.add(a - b);
 
             } else {
 
-                incorrectAnswer = rand.nextInt(401);
+                incorrectAnswer = rand.nextInt(21);
 
-                while (incorrectAnswer == a * b) {
+                while (incorrectAnswer == a - b) {
 
-                    incorrectAnswer = rand.nextInt(401);
+                    incorrectAnswer = rand.nextInt(21);
 
                 }
 
@@ -159,7 +158,7 @@ public class MainActivity extends Activity {
         gameRelativeLayout.setVisibility(RelativeLayout.VISIBLE);
 
         playAgain(findViewById(R.id.playAgainButton));
-       // gameIsActive= true;
+        // gameIsActive= true;
 
     }
 
@@ -205,20 +204,16 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         if (id == R.id.action_additions) {
-            // launch settings activity
-            startActivity(new Intent(MainActivity.this, MainActivityAdditions.class));
-            //NavUtils.navigateUpFromSameTask(this);
+            // launch additions activity
+            startActivity(new Intent(MainActivitySubtractions.this, MainActivityAdditions.class));
+           // NavUtils.navigateUpFromSameTask(this);
             return true;
-        }  else if (id == R.id.action_subtractions) {
-            // launch subtraction activity
-            startActivity(new Intent(MainActivity.this, MainActivitySubtractions.class));
-            //NavUtils.navigateUpFromSameTask(this);
+        }else if (id == R.id.action_multiplications) {
+            // launch main activity activity
+             startActivity(new Intent(MainActivitySubtractions.this, MainActivity.class));
+           // NavUtils.navigateUpFromSameTask(this);
             return true;
         }
-
-
-
-
 
         return super.onOptionsItemSelected(item);
     }

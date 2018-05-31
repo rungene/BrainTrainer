@@ -1,17 +1,20 @@
 package com.example.robpercival.braintrainer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 
 public class MainActivityAdditions extends Activity {
 
@@ -26,6 +29,8 @@ public class MainActivityAdditions extends Activity {
     TextView timerTextView;
     Button playAgainButton;
     RelativeLayout gameRelativeLayout;
+    GridLayout gridLayout;
+ //   boolean gameIsActive = true;
 
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int locationOfCorrectAnswer;
@@ -41,6 +46,7 @@ public class MainActivityAdditions extends Activity {
         pointsTextView.setText("0/0");
         resultTextView.setText("");
         playAgainButton.setVisibility(View.INVISIBLE);
+        gridLayout.setVisibility(View.VISIBLE);
 
         generateQuestion();
 
@@ -59,6 +65,8 @@ public class MainActivityAdditions extends Activity {
                 playAgainButton.setVisibility(View.VISIBLE);
                 timerTextView.setText("0s");
                 resultTextView.setText("Your score: " + Integer.toString(score) + "/" + Integer.toString(numberOfQuestions));
+               // gameIsActive = false;
+                gridLayout.setVisibility(View.INVISIBLE);
 
             }
         }.start();
@@ -67,6 +75,8 @@ public class MainActivityAdditions extends Activity {
     }
 
     public void generateQuestion() {
+
+       // gameIsActive = true;
 
         Random rand = new Random();
 
@@ -111,6 +121,7 @@ public class MainActivityAdditions extends Activity {
 
 
     }
+
 
     public void chooseAnswer(View view) {
 
@@ -157,6 +168,7 @@ public class MainActivityAdditions extends Activity {
         timerTextView = (TextView)findViewById(R.id.timerTextView);
         playAgainButton = (Button)findViewById(R.id.playAgainButton);
         gameRelativeLayout = (RelativeLayout)findViewById(R.id.gameRelativeLayout);
+        gridLayout = (GridLayout) findViewById(R.id.gridLayout);
 
 
     }
@@ -181,12 +193,17 @@ public class MainActivityAdditions extends Activity {
         }*/
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            // launch settings activity
-           // startActivity(new Intent(MainActivity.this, MainActivityAdditions.class));
+        if (id == R.id.action_multiplications) {
+            // launch multiplication activity activity
+            startActivity(new Intent(MainActivityAdditions.this, MainActivity.class));
+           // NavUtils.navigateUpFromSameTask(this);
+            return true;
+        }else if (id == R.id.action_subtractions) {
+            // launch subtraction activity
+             startActivity(new Intent(MainActivityAdditions.this, MainActivitySubtractions.class));
+          //  NavUtils.navigateUpFromSameTask(this);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
