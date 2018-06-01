@@ -18,8 +18,10 @@
         </activity>
         <activity
             android:name=".MainActivityAdditions"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.AppCompat.Light"
+
             >
+
         </activity>
         <activity android:name=".MainActivitySubtractions"
             android:theme="@style/Theme.AppCompat.Light"
