@@ -1,10 +1,9 @@
 package com.example.robpercival.braintrainer;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.Menu;
+import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -181,14 +180,16 @@ public class MainActivitySubtractions extends Activity {
         gridLayout = (GridLayout) findViewById(R.id.gridLayout);
 
 
+
+
     }
 
-    @Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -203,17 +204,17 @@ public class MainActivitySubtractions extends Activity {
         }*/
         int id = item.getItemId();
 
-        if (id == R.id.action_additions) {
+        if (id == R.id.home) {
             // launch additions activity
-            startActivity(new Intent(MainActivitySubtractions.this, MainActivityAdditions.class));
-           // NavUtils.navigateUpFromSameTask(this);
+           // startActivity(new Intent(MainActivitySubtractions.this, MainActivityAdditions.class));
+            NavUtils.navigateUpFromSameTask(this);
             return true;
-        }else if (id == R.id.action_multiplications) {
+        }/*else if (id == R.id.action_multiplications) {
             // launch main activity activity
              startActivity(new Intent(MainActivitySubtractions.this, MainActivity.class));
            // NavUtils.navigateUpFromSameTask(this);
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

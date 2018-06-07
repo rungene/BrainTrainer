@@ -205,19 +205,18 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         if (id == R.id.action_additions) {
-            // launch settings activity
+            // launch MainActivityAdditions activity
             startActivity(new Intent(MainActivity.this, MainActivityAdditions.class));
             //NavUtils.navigateUpFromSameTask(this);
+
+
             return true;
         }  else if (id == R.id.action_subtractions) {
-            // launch subtraction activity
+            // launch MainActivitySubtractions activity
             startActivity(new Intent(MainActivity.this, MainActivitySubtractions.class));
             //NavUtils.navigateUpFromSameTask(this);
             return true;
         }
-
-
-
 
 
         return super.onOptionsItemSelected(item);
